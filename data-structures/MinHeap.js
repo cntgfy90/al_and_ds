@@ -8,27 +8,48 @@ class MinHeap {
       this.bubbleUp(this.heap.length - 1);
     }
   
-    bubbleUp(key) {
-      let parentIndex = Math.ceil((key / 2)) - 1;
+    bubbleUp(index) {
+      let parentIndex = Math.ceil(index / 2) - 1;
   
-      if (this.heap.length < 3) {
-        if (this.heap[0] > this.heap[key]) {
-          const temp = this.heap[0];
-          this.heap[0] = this.heap[key];
-          this.heap[key] = temp;
-        }
-      }
-  
-      while (
-        this.heap[parentIndex] > this.heap[key]
-      ) {
+      while (this.heap[parentIndex] > this.heap[index]) {
         const temp = this.heap[parentIndex];
-        this.heap[parentIndex] = this.heap[key];
-        this.heap[key] = temp;
+        this.heap[parentIndex] = this.heap[index];
+        this.heap[index] = temp;
   
-        key = parentIndex;
-        parentIndex = Math.ceil(key / 2) - 1;
+        index = parentIndex;
+        parentIndex = Math.ceil(index / 2) - 1;
       }
+    }
+
+    bubbleDown(index) {
+
+        while (true) {
+            const isLeftChildGreaterThanRight = this.heap[(index * 2) + 1] > this.heap[(index * 2) + 2];
+            const minChildIndex = isLeftChildGreaterThanRight ? (index * 2) + 2 : (index * 2) + 1;
+
+            console.log(minChildIndex);
+            if (this.heap[index] > this.heap[minChildIndex]) {
+                const temp = this.heap[minChildIndex];
+                this.heap[minChildIndex] = this.heap[index];
+                this.heap[index] = temp;
+                index = minChildIndex;
+            } else {
+                break;
+            }
+        }
+    }
+
+    poll() {
+        const lastIndex = this.heap.length - 1;
+        const firstElement = this.heap[0];
+        const lastElement = this.heap[lastIndex];
+        
+        const temp = firstElement;
+        this.heap[0] = lastElement;
+        this.heap[lastIndex] = temp;
+
+        this.heap.pop();
+        this.bubbleDown(0);
     }
   
     display() {

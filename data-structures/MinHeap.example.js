@@ -11,4 +11,5 @@ minHeap.insert(8);
 minHeap.insert(144);
 minHeap.insert(3);
 minHeap.insert(6);
+minHeap.poll();
 minHeap.display();
