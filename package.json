@@ -1,0 +1,15 @@
+{
+  "name": "al_and_ds",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cntgfy90/al_and_ds.git",
+  "author": "<stepanhryhorov@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2"
+  },
+  "scripts": {
+    "test": "mocha 'test/**/*.js'"
+  }
+}

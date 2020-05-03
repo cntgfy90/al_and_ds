@@ -51,6 +51,10 @@ class MinHeap {
         this.heap.pop();
         this.bubbleDown(0);
     }
+
+    getHeap() {
+        return this.heap;
+    }
   
     display() {
       console.log(JSON.stringify(this.heap));
